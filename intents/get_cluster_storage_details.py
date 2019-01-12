@@ -7,6 +7,13 @@ import urllib2
 CLUSTER_IP = 'a.b.c.d'
 AUTH_TOKEN = 'token'
 
+''' Sample Utterances
+What is the capacity of the cluster
+How much space is available on the cluster
+How much space is used on the cluster
+Give me cluster storage details
+'''
+
 LEX_RESULT = {
     'dialogAction': {
         'type': 'Close',

@@ -7,6 +7,14 @@ import urllib2
 CLUSTER_IP = 'a.b.c.d'
 AUTH_TOKEN = 'token'
 
+''' Sample Utterances
+How is my data growing
+How fast is my data growing
+What is the amount of data growth
+Rate of data growth
+What is the rate of my data growth
+'''
+
 LEX_RESULT = {
     'dialogAction': {
         'type': 'Close',

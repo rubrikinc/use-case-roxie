@@ -6,6 +6,12 @@ import urllib2
 CLUSTER_IP = 'a.b.c.d'
 AUTH_TOKEN = 'token'
 
+''' Sample Utterances
+How much runway is left
+How much runway do I have left
+What is the remaining runway on my cluster
+'''
+
 LEX_RESULT = {
     'dialogAction': {
         'type': 'Close',

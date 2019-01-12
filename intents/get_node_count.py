@@ -6,6 +6,12 @@ import urllib2
 CLUSTER_IP = 'a.b.c.d'
 AUTH_TOKEN = 'token'
 
+''' Sample Utterances
+What is the node count
+How many nodes are in the cluster
+What is the number of nodes in the cluster
+'''
+
 LEX_RESULT = {
     'dialogAction': {
         'type': 'Close',

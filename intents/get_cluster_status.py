@@ -6,6 +6,13 @@ import urllib2
 CLUSTER_IP = 'a.b.c.d'
 AUTH_TOKEN = 'token'
 
+''' Sample Utterances
+Is cluster doing okay
+What is the status of the cluster
+Status of my cluster
+How is my cluster doing
+'''
+
 LEX_RESULT = {
     'dialogAction': {
         'type': 'Close',

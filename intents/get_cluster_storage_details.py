@@ -1,12 +1,12 @@
 """Return cluster storage details."""
 import json
 import math
+import os
 import ssl
 import urllib2
-import os
 
-CLUSTER_IP = os.environ['cluster_ip']
-AUTH_TOKEN = os.environ['auth_token']
+CLUSTER_IP = os.environ['CLUSTER_IP']
+AUTH_TOKEN = os.environ['AUTH_TOKEN']
 
 ''' Sample Utterances
 What is the capacity of the cluster

@@ -1,11 +1,11 @@
 """Return cluster status."""
 import json
+import os
 import ssl
 import urllib2
-import os
 
-CLUSTER_IP = os.environ['cluster_ip']
-AUTH_TOKEN = os.environ['auth_token']
+CLUSTER_IP = os.environ['CLUSTER_IP']
+AUTH_TOKEN = os.environ['AUTH_TOKEN']
 
 ''' Sample Utterances
 Is cluster doing okay

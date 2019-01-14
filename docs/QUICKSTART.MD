@@ -3,9 +3,32 @@
 
 # Table of Contents
 
-
-[TOC]
-
+- [Introduction to the Roxie Bot](#introduction-to-the-roxie-bot)
+- [Rubrik Cluster Configuration](#rubrik-cluster-configuration)
+	- [Generate a Rubrik API Token](#generate-a-rubrik-api-token)
+- [AWS Environment Configuration](#aws-environment-configuration)
+	- [VPC Networking (todo)](#vpc-networking-todo)
+	- [IAM Roles](#iam-roles)
+		- [Role for AWS Lambda](#role-for-aws-lambda)
+		- [Role for AWS Lex](#role-for-aws-lex)
+- [AWS Lambda](#aws-lambda)
+	- [Function Creation](#function-creation)
+	- [Modifying the Lambda Role](#modifying-the-lambda-role)
+	- [Function Configuration](#function-configuration)
+		- [Function Code](#function-code)
+		- [Network](#network)
+	- [Function Testing](#function-testing)
+	- [Troubleshooting](#troubleshooting)
+		- [Network Troubleshooting](#network-troubleshooting)
+		- [Authorization Troubleshooting](#authorization-troubleshooting)
+- [AWS Lex](#aws-lex)
+	- [Bot Creation](#bot-creation)
+	- [Intent Creation](#intent-creation)
+		- [Sample Utterances](#sample-utterances)
+		- [Fulfillment](#fulfillment)
+	- [Bot Build](#bot-build)
+	- [Bot Testing](#bot-testing)
+- [Appendix A - Object Details](#appendix-a---object-details)
 
 
 # Introduction to the Roxie Bot

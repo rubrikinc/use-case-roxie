@@ -209,14 +209,14 @@ Note: Skipping this step will result in not being able to choose a VPC for your 
 
 Navigate back to IAM > Roles and click on your `roxie_lambda` role to edit it. In the next screen, click on the large blue **Attach Policies** button.
 
-![Roxie Lambda Role Summary](/docs/images/roxie-lambda-summary-2.jpg)
+![Roxie Lambda Role Summary](/docs/images/roxie-lambda-summary-1.jpg)
 
 Next, select the `lambda_vpc` policy and click on the **Attach Policy** button in the bottom right corner. You should now have two policies attached to the `roxie_lambda` role:
 
 *   `AWSLambdaBasicExecutionRole-{guid}`
 *   `lambda_vpc`
 
-![Roxie Lambda Role Summary](/docs/images/roxie-lambda-summary-1.jpg)
+![Roxie Lambda Role Summary](/docs/images/roxie-lambda-summary-2.jpg)
 
 The role for your Lambda function is now able to use VPC networking, which results in being able to route back to your on-premises environment.
 

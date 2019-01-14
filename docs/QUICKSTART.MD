@@ -12,6 +12,8 @@
 
 The high level design of this solution.
 
+---
+
 # Rubrik Cluster Configuration
 
 Rubrik's powerful API allows you to provide control and visibility to Roxie based on your specific needs and use cases. Access to the API is provided by an API Token. This method allows you to abstract away account information, such as the username and password, into a long, complex looking string called a token. Additionally, the token can be manually or automatically expired if any concerns arise or if the use case has a limited duration.
@@ -21,7 +23,7 @@ In order to generate an API Token, you must first decide what sort of user accou
 
 
 *   **End User (Recommended)** - An End User account will limit the scope of authority. This is handy for situations where you only want to provide visibility and reporting to your bot. Make sure the account has visibility to all of the SLA Domains, virtual machines, servers, applications, and cloud workloads that you wish to access via Roxie.
-*   **Administrator **- An Administrator account will allow Roxie to receive more powerful commands, such as modifying or updating objects and configuration settings in your Rubrik cluster. While it is still possible to use Rubrik's Role Based Access Control (RBAC) to limit the scope of the Administrator account, it is good to be cautious when granting this level of authority to Roxie.
+*   **Administrator** - An Administrator account will allow Roxie to receive more powerful commands, such as modifying or updating objects and configuration settings in your Rubrik cluster. While it is still possible to use Rubrik's Role Based Access Control (RBAC) to limit the scope of the Administrator account, it is good to be cautious when granting this level of authority to Roxie.
 
 
 ## Generate a Rubrik API Token
@@ -34,9 +36,9 @@ Once you have decided on a user account with the appropriate amount of permissio
 1.  Click on the green, circular "plus sign" in the upper right of the UI to start the Generate API Token workflow.
     1.  Duration (Days): 30
     1.  Tag: `aws_lambda_functions`
-1.  Click the **Generate **button.
+1.  Click the **Generate** button.
 1.  The Copy API Token window will appear with a token value displayed.
-1.  Click on the **Copy **button to copy the token into your clipboard and close the window.
+1.  Click on the **Copy** button to copy the token into your clipboard and close the window.
     1.  Make sure to save the token somewhere safe! For security purposes, Rubrik will never display the token value again.
 
 ```
@@ -50,6 +52,8 @@ You should now see a new token ID appear in the API Token Manager list with the 
 ![API Token Manager](/docs/images/api-token-manager.jpg)
 
 There is nothing more to configure in your Rubrik environment. Let's move on to the AWS components!
+
+---
 
 # AWS Environment Configuration
 
@@ -143,6 +147,8 @@ The name of the automatically generated role will be `AWSServiceRoleForLexBots` 
 
 We'll come back to the AWS Lex role. For now, you will not have a role generated until reaching the AWS Lex section of this guide.
 
+---
+
 # AWS Lambda
 
 AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume - there is no charge when your code is not running. With AWS Lambda, you can run code for virtually any type of application or backend service - all with zero administration. All you need to do is supply your code in one of the languages that AWS Lambda supports (currently Node.js, Java, C#, Go and Python).
@@ -216,7 +222,7 @@ Next, it's important to edit the value of two variables: CLUSTER_IP and AUTH_TOK
 1.  CLUSTER_IP: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
 1.  AUTH_TOKEN: Enter the token created in the Generate a Rubrik API Token section.
 
-With those values updated, you can now click the **Save **button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
+With those values updated, you can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 
 ### Network
 
@@ -226,7 +232,7 @@ As an example, the Rubrik Build lab uses a specific OR Demo VPC to communicate t
 
 ![Network Settings for get_cluster_status](/docs/images/get-cluster-status-network.jpg)
 
-Once finished, you can now click the **Save **button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
+Once finished, you can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 
 ```
 Note: If the save button remains orange, it typically means that you have not properly added the EC2 permissions necessary for the Lambda role to attach to your VPC network.
@@ -236,12 +242,12 @@ Note: If the save button remains orange, it typically means that you have not pr
 
 Before proceeding further, it's a good idea to test your Lambda function to make sure that the code and networking configuration are functioning properly. To do this, use the built in Test functionality in the function.
 
-Click the **Test **button in the top right corner. Next, make sure the **Create New Test Event** radio button is selected.
+Click the **Test** button in the top right corner. Next, make sure the **Create New Test Event** radio button is selected.
 
 *   Event Template: Hello World
 *   Event Name: `hello`
 
-Click on the **Create **button in the bottom right corner to proceed. You should now have a new test named `hello` next to the Test button. If so, click on the **Test **button to run the `hello` test.
+Click on the **Create** button in the bottom right corner to proceed. You should now have a new test named `hello` next to the Test button. If so, click on the **Test** button to run the `hello` test.
 
 ```
 Note: Why did we use the Hello World test? Because it doesn't matter! The function is not accepting any inputs, so the testing construct itself doesn't have any impact on the code. This will make more sense once we actually create the Roxie bot in the AWS Lex section.
@@ -275,6 +281,8 @@ Some items to investigate for authorization:
 *   Have you checked the Rubrik cluster to see why the authorization request failed?
 *   Have you perhaps limited the Roxie account to the point where it can't get cluster status?
 *   Have you tried using an Administrative token to see if the issue is with the scope or permissiveness of your account?
+
+---
 
 # AWS Lex
 

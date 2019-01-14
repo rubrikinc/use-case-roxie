@@ -2,9 +2,10 @@
 import json
 import ssl
 import urllib2
+import os
 
-CLUSTER_IP = 'a.b.c.d'
-AUTH_TOKEN = 'token'
+CLUSTER_IP = os.environ['cluster_ip']
+AUTH_TOKEN = os.environ['auth_token']
 
 ''' Sample Utterances
 Is cluster doing okay

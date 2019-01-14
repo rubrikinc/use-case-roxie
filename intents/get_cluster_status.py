@@ -3,7 +3,8 @@ import json
 import ssl
 import urllib2
 
-import constants
+CLUSTER_IP = 'a.b.c.d'
+AUTH_TOKEN = 'token'
 
 ''' Sample Utterances
 Is cluster doing okay
@@ -33,8 +34,8 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     req = urllib2.Request(
-        'https://%s/api/internal/cluster/me/node' % constants.CLUSTER_IP, None)
-    req.add_header('Authorization', 'Bearer %s' % constants.AUTH_TOKEN)
+        'https://%s/api/internal/cluster/me/node' % CLUSTER_IP, None)
+    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
 
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)

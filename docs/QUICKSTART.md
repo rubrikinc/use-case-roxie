@@ -16,6 +16,7 @@
 	- [Modifying the Lambda Role](#modifying-the-lambda-role)
 	- [Function Configuration](#function-configuration)
 		- [Function Code](#function-code)
+        - [Environmental Variables](#environmental-variables)
 		- [Network](#network)
 	- [Function Testing](#function-testing)
 	- [Troubleshooting](#troubleshooting)
@@ -244,7 +245,9 @@ You can now click the **Save** button in the upper right corner of the window to
 
 ### Environmental Variables
 
-Next, it's important to add two environment variables: `cluster_ip` and `auth_token`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
+Next, the function needs to know how to connect to your cluster. We feel it's better to keep static information out of the function code. 
+
+For this step, it's important to add two environment variables: `cluster_ip` and `auth_token`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
 
 1.  `cluster_ip`: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
 1.  `auth_token`: Enter the token created in the Generate a Rubrik API Token section.

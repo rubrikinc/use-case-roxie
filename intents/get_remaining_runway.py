@@ -3,8 +3,8 @@ import json
 import ssl
 import urllib2
 
-CLUSTER_IP = 'a.b.c.d'
-AUTH_TOKEN = 'token'
+import constants
+
 
 ''' Sample Utterances
 How much runway is left
@@ -54,10 +54,11 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     req = urllib2.Request(
-        ('https://%s/api/internal/stats/runway_remaining' % CLUSTER_IP),
+        ('https://%s/api/internal/stats/runway_remaining' %
+         constants.CLUSTER_IP),
         None
     )
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Bearer %s' % constants.AUTH_TOKEN)
 
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)

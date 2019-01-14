@@ -4,8 +4,7 @@ import math
 import ssl
 import urllib2
 
-CLUSTER_IP = 'a.b.c.d'
-AUTH_TOKEN = 'token'
+import constants
 
 ''' Sample Utterances
 How is my data growing
@@ -65,10 +64,10 @@ def lambda_handler(event, context):
 
     req = urllib2.Request(
         ('https://%s/api/internal/stats/average_storage_growth_per_day' %
-         CLUSTER_IP),
+         constants.CLUSTER_IP),
         None
     )
-    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
+    req.add_header('Authorization', 'Bearer %s' % constants.AUTH_TOKEN)
 
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)

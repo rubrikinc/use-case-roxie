@@ -228,10 +228,11 @@ You can now navigate back to the `get_cluster_status` Lambda function to proceed
 
 ## Function Configuration
 
-There are only two sections to edit in the Lambda function page:
+There are only three sections to edit in the Lambda function page:
 
-1.  Function Code: This is where the Python code for getting cluster status is loaded.
-1.  Network: This is where the VPC network is selected.
+1.  [Function Code](#function-code): This is where the Python code for getting cluster status is loaded.
+1.  [Environmental Variables](#environmental-variables): This is where the connection information for your Rubrik cluster is stored.
+1.  [Network](#network): This is where the VPC network is selected.
 
 ### Function Code
 

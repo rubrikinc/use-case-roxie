@@ -4,7 +4,8 @@ import math
 import ssl
 import urllib2
 
-import constants
+CLUSTER_IP = 'a.b.c.d'
+AUTH_TOKEN = 'token'
 
 ''' Sample Utterances
 What is the capacity of the cluster
@@ -63,11 +64,10 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     req = urllib2.Request(
-        ('https://%s/api/internal/stats/system_storage' %
-         constants.CLUSTER_IP),
+        ('https://%s/api/internal/stats/system_storage' % CLUSTER_IP),
         None
     )
-    req.add_header('Authorization', 'Bearer %s' % constants.AUTH_TOKEN)
+    req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
 
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)

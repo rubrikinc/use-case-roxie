@@ -240,10 +240,16 @@ Locate the Function Code window and delete any code that already exists in the l
 
 ![Function Code for get_cluster_status](/docs/images/get-cluster-status-function-code.jpg)
 
-Next, it's important to edit the value of two variables: CLUSTER_IP and AUTH_TOKEN.
+You can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 
-1.  CLUSTER_IP: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
-1.  AUTH_TOKEN: Enter the token created in the Generate a Rubrik API Token section.
+### Environmental Variables
+
+Next, it's important to add two environment variables: `cluster_ip` and `auth_token`. This can be done by scrolling down below the Function Code area and locating the Environmental Variables area.
+
+1.  `cluster_ip`: Enter the IP address of a node in your cluster. Make sure it is reachable from the VPC network that you plan to use for Roxie. This will be covered in the next section.
+1.  `auth_token`: Enter the token created in the Generate a Rubrik API Token section.
+
+![Function Code for get_cluster_status](/docs/images/environmental-variables.jpg)
 
 With those values updated, you can now click the **Save** button in the upper right corner of the window to save your progress. It should change from orange to a greyed-out color upon success.
 

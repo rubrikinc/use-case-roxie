@@ -1,4 +1,9 @@
-"""Open support tunnel on one of the nodes. This takes about 5-10 seconds."""
+"""Open support tunnel on one of the nodes.  This takes about 5-10 seconds.
+
+Note: Lambda function have default timeout of 3 seconds. Please make sure
+to set the timeout to 30 seconds. This option is available in 'Basic settings'
+section in AWS Lambda editor web page.
+"""
 import json
 import math
 import os

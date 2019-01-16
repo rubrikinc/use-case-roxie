@@ -28,35 +28,6 @@ LEX_RESULT = {
     }
 }
 
-TB = math.pow(10, 12)
-GB = math.pow(10, 9)
-MB = math.pow(10, 6)
-PRECISION = 1
-
-
-def human_readable_size(bytes):
-    tb = None
-    gb = None
-    mb = None
-    bytes = int(bytes)
-    tb = round(bytes / TB, PRECISION)
-    if not tb:
-        gb = round(bytes / GB, PRECISION)
-    if not tb and not gb:
-        mb = round(bytes / MB, PRECISION)
-
-    output = None
-    if tb:
-        output = '%s Terabytes' % tb
-    if gb:
-        output = '%s Gigabytes' % gb
-    if mb:
-        output = '%s Megabytes' % mb
-    if not output:
-        output = '%s Bytes' % bytes
-
-    return output
-
 
 def lambda_handler(event, context):
     del event

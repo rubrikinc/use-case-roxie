@@ -24,6 +24,8 @@ LEX_RESULT = {
     }
 }
 
+ENDPOINT_RUNWAY = 'https://{0}/api/internal/stats/runway_remaining'
+
 
 def human_readable_days(days):
     years = int(days / 365)
@@ -54,12 +56,8 @@ def lambda_handler(event, context):
     ssl_context.check_hostname = False
     ssl_context.verify_mode = ssl.CERT_NONE
 
-    req = urllib2.Request(
-        ('https://%s/api/internal/stats/runway_remaining' % CLUSTER_IP),
-        None
-    )
+    req = urllib2.Request(ENDPOINT_RUNWAY.format(CLUSTER_IP), None)
     req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
-
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))

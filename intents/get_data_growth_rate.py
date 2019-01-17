@@ -32,6 +32,10 @@ GB = math.pow(10, 9)
 MB = math.pow(10, 6)
 PRECISION = 1
 
+ENDPOINT_STORAGE_GROWTH = (
+    'https://{0}/api/internal/stats/average_storage_growth_per_day'
+)
+
 
 def human_readable_size(bytes):
     tb = None
@@ -64,13 +68,8 @@ def lambda_handler(event, context):
     ssl_context.check_hostname = False
     ssl_context.verify_mode = ssl.CERT_NONE
 
-    req = urllib2.Request(
-        ('https://%s/api/internal/stats/average_storage_growth_per_day' %
-         CLUSTER_IP),
-        None
-    )
+    req = urllib2.Request(ENDPOINT_STORAGE_GROWTH.format(CLUSTER_IP), None)
     req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
-
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -78,7 +77,6 @@ def lambda_handler(event, context):
     """ Sample response:
     {u'bytes': 984544048}
     """
-
     if 'bytes' not in resp:
         output = (
             'I am sorry, rate of data growth is not available at this point')

@@ -25,6 +25,8 @@ LEX_RESULT = {
     }
 }
 
+ENDPOINT_CLUSTER_STATUS = 'https://{0}/api/internal/cluster/me/node'
+
 
 def lambda_handler(event, context):
     del event
@@ -34,10 +36,8 @@ def lambda_handler(event, context):
     ssl_context.check_hostname = False
     ssl_context.verify_mode = ssl.CERT_NONE
 
-    req = urllib2.Request(
-        'https://%s/api/internal/cluster/me/node' % CLUSTER_IP, None)
+    req = urllib2.Request(ENDPOINT_CLUSTER_STATUS.format(CLUSTER_IP), None)
     req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
-
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -57,7 +57,6 @@ def lambda_handler(event, context):
         u'hasMore': False
     }
     """
-
     ok_nodes_count = 0
     for node in resp['data']:
         if node['status'] == 'OK':

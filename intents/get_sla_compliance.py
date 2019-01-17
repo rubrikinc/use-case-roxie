@@ -28,6 +28,11 @@ LEX_RESULT = {
     }
 }
 
+ENDPOINT_SLA_COMP_SUMMARY = (
+    'https://{0}/api/internal/report?report_template=SlaComplianceSummary'
+)
+ENDPOINT_SLA_COMP_CHART = 'https://{0}/api/internal/report/{1}/chart'
+
 
 def lambda_handler(event, context):
     del event
@@ -38,13 +43,8 @@ def lambda_handler(event, context):
     ssl_context.verify_mode = ssl.CERT_NONE
 
     # Get CustomReport ID
-    req = urllib2.Request(
-        ('https://%s/api/internal/report'
-         '?report_template=SlaComplianceSummary' % CLUSTER_IP),
-        None
-    )
+    req = urllib2.Request(ENDPOINT_SLA_COMP_SUMMARY.format(CLUSTER_IP), None)
     req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
-
     handler = urllib2.HTTPSHandler(context=ssl_context)
     opener = urllib2.build_opener(handler)
     resp = json.load(opener.open(req))
@@ -66,8 +66,7 @@ def lambda_handler(event, context):
 
     # Get details of the report using ID from above
     req = urllib2.Request(
-        ('https://%s/api/internal/report/%s/chart' % (CLUSTER_IP, report_id)),
-        None
+        ENDPOINT_SLA_COMP_CHART.format(CLUSTER_IP, report_id), None
     )
     req.add_header('Authorization', 'Bearer %s' % AUTH_TOKEN)
 

@@ -33,6 +33,7 @@ LEX_RESULT = {
 ENDPOINT_NODE = 'https://{0}/api/internal/node'
 ENDPOINT_TUNNEL = 'https://{0}/api/internal/node/{1}/support_tunnel'
 
+
 def lambda_handler(event, context):
     del event
     del context

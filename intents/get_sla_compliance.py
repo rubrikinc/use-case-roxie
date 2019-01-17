@@ -129,14 +129,15 @@ def lambda_handler(event, context):
         """
         non_compliance_slas = {}
         for report in resp:
-            if report['measure'] == 'StackedComplianceCountByStatus':
-                for data_column in report['dataColumns']:
-                    data_point = data_column['dataPoints'][0]
-                    non_compliance_count = 0
-                    if data_point['measure'] == 'NonComplianceCount':
-                        non_compliance_count += data_point['value']
-                    sla_name = data_column['label']
+            if report['measure'] != 'StackedComplianceCountByStatus':
+                continue
+            for data_column in report['dataColumns']:
+                for data_point in data_column['dataPoints']:
+                    if data_point['measure'] != 'NonComplianceCount':
+                        continue
+                    non_compliance_count = data_point['value']
                     if non_compliance_count:
+                        sla_name = data_column['label']
                         non_compliance_slas[sla_name] = (
                             int(non_compliance_count)
                         )

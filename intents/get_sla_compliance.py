@@ -9,11 +9,11 @@ CLUSTER_IP = os.environ['CLUSTER_IP']
 AUTH_TOKEN = os.environ['AUTH_TOKEN']
 
 ''' Sample Utterances
-How are my SLAs doing?
-Are my SLAs in compliance?
+How are my SLAs doing
+Are my SLAs in compliance
 Read out SLA compliance summary
 Get me SLA compliance summary
-Give me SLA compliancy summary
+Give me SLA compliance summary
 How many SLAs are in compliance
 '''
 

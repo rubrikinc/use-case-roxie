@@ -6,6 +6,7 @@ Now you can construct a Roxie of your very own and explore the idea behind runni
 
 # Quick Start
 
+* [Getting Started Video](https://youtu.be/znjH9T3BveM)
 * [Quick Start Guide](/docs/QUICKSTART.md)
 
 # Prerequisites

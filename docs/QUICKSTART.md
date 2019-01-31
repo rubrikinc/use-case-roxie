@@ -34,7 +34,16 @@
 
 # Introduction to the Roxie Bot
 
-The high level design of this solution.
+Roxie may look a little complex, but the overall workflow is actually quite simple.
+
+1. A user asks a question using natural spoken or written word.
+1. AWS Lex is listening for one or more "sample utterances" to determine your intent. In this case, the intent is to get the cluster status, and so the `cluster_status` intent would be chosen by Lex.
+1. Lex then looks to see which AWS Lambda function to execute.
+1. This function contains code used to query the Rubrik API and find an answer to our question.
+1. The Rubrik API responds to the query and tells Lambda that everything is OK! The function code then formats the message into something a bit more human friendly.
+1. The friendly message is handed back to Lex (and the Polly service) to share the good news - your cluster is doing awesome!
+
+![Roxie Architecture](/docs/images/architecture.jpg)
 
 ---
 
@@ -86,15 +95,9 @@ All of the logic and operations of Roxie are stored and live in AWS. While this 
 With that said, there are a number of requirements you must meet in order to be successful with Roxie in AWS, such as making sure your VPC can talk back to your on-premises cluster and setting up IAM roles and policies. We'll go over these steps in greater detail in the next few sections.
 
 
-## VPC Networking (todo)
+## VPC Networking
 
-Questions to answer:
-
-*   How to configure the VPC network
-*   Private subnets (2 for redundancy)
-*   Security Gateway
-*   Any other network security concerns
-*   Meraki configuration on-prem (generic instructions for user's network gear on-prem)
+It is recommended that you connect from AWS to your on-premises Rubrik instances by way of a VPN of dedicated tunnel. Be sure to add any necessary routing between the AWS region you choose and your target Rubrik cluster.
 
 
 ## IAM Roles
@@ -323,7 +326,7 @@ Amazon Lex is an AWS service for building conversational interfaces into applica
 
 Roxie uses Amazon Lex to come alive and answer your questions. For every question you ask, she will attempt to look through all of the available decision points to see if there is a Lambda function that can be called to answer your question. Consider Lex to be Roxie's brain - she accepts verbal inputs, uses Lambda to find the answer, and then responds as an output.
 
-todo: Diagram here
+![Roxie Architecture](/docs/images/architecture.jpg)
 
 ## Bot Creation
 

@@ -7,7 +7,7 @@
 - [Rubrik Cluster Configuration](#rubrik-cluster-configuration)
 	- [Generate a Rubrik API Token](#generate-a-rubrik-api-token)
 - [AWS Environment Configuration](#aws-environment-configuration)
-	- [VPC Networking (todo)](#vpc-networking-todo)
+	- [VPC Networking](#vpc-networking)
 	- [IAM Roles](#iam-roles)
 		- [Role for AWS Lambda](#role-for-aws-lambda)
 		- [Role for AWS Lex](#role-for-aws-lex)

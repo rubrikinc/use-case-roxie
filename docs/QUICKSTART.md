@@ -34,7 +34,9 @@
 
 # Introduction to the Roxie Bot
 
-Roxie may look a little complex, but the overall workflow is actually quite simple.
+Roxie may look a little complex, but the overall workflow is actually quite simple. You may want to [watch this getting started video](https://youtu.be/znjH9T3BveM) to better understand the high level components used in this project.
+
+The end-to-end workflow is as follows:
 
 1. A user asks a question using natural spoken or written word.
 1. AWS Lex is listening for one or more "sample utterances" to determine your intent. In this case, the intent is to get the cluster status, and so the `cluster_status` intent would be chosen by Lex.

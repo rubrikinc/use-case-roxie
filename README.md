@@ -11,7 +11,7 @@ Here are some resources to get you started! If you find any challenges from this
 * [Getting Started Video](https://youtu.be/znjH9T3BveM)
 * [Quick Start Guide](/docs/QUICKSTART.md)
 
-## :white_check_mark: Prerequisites
+# :white_check_mark: Prerequisites
 
 There are a few services you'll need in order to get this project off the ground:
 

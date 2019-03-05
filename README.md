@@ -1,3 +1,5 @@
+[![Azure Pipelines Build Status][azure-pipeline-badge]][azure-pipeline-build] [![License][license-badge]][license]
+
 # Roxie, Rubrik's Intelligent Personal Assistant 
 
 Roxie is based on a real world contribution that was developed by [Manjunath Chinni](https://github.com/manjunathchinni), a developer at Rubrik, as part of our annual Hackathon. The spirit of this event is to push the boundaries of what currently exists and explore the realm of the possible. You may have seen Roxie featured in the [Data Management Meets Artificial Intelligence](https://www.youtube.com/watch?v=8OcGcScgzOo) video on YouTube.

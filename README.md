@@ -25,6 +25,7 @@ We glady welcome contributions from the community. From updating the documentati
 
 * [Contributing Guide](CONTRIBUTING.md)
 * [Code of Conduct](CODE_OF_CONDUCT.md)
+* [Build Pipeline](https://dev.azure.com/rubrik-build/use-case-roxie/_build)
 
 # :pushpin: License
 

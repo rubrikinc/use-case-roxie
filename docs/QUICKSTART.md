@@ -26,6 +26,7 @@
 	- [Bot Creation](#bot-creation)
 	- [Intent Creation](#intent-creation)
 		- [Sample Utterances](#sample-utterances)
+		- [Intents Involving Slots](#intents-involving-slots)
 		- [Fulfillment](#fulfillment)
 	- [Bot Build](#bot-build)
 	- [Bot Testing](#bot-testing)
@@ -370,7 +371,7 @@ We'll pick several phrases from the `get_cluster_status.py` example and enter th
 
 If the spoken command matches one of the sample utterances, the intent will be chosen. Roxie will then look at the fulfillment to see what to do next.
 
-### Intents involving Slots
+### Intents Involving Slots
 
 Certain functions require further information from the intent before fulfillment can be satisified. For instance when the Invoke a VMware Live Mount intent is sent through Lex, a response will be sent asking "Which VM?" to perform the Live Mount on. In order to store the response to "Which VM?" Lex utilizing Slots. A slot is simply data which the user must provide in order to fulfill the intent.
 

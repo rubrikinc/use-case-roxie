@@ -99,7 +99,7 @@ With that said, there are a number of requirements you must meet in order to be 
 
 ## VPC Networking
 
-It is recommended that you connect from AWS to your on-premises Rubrik instances by way of a VPN of dedicated tunnel. Be sure to add any necessary routing between the AWS region you choose and your target Rubrik cluster.
+It is recommended that you connect from AWS to your on-premises Rubrik instances by way of a VPN or dedicated tunnel. Be sure to add any necessary routing between the AWS region you choose and your target Rubrik cluster.
 
 
 ## IAM Roles

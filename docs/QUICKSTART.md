@@ -26,6 +26,7 @@
 	- [Bot Creation](#bot-creation)
 	- [Intent Creation](#intent-creation)
 		- [Sample Utterances](#sample-utterances)
+		- [Intents Involving Slots](#intents-involving-slots)
 		- [Fulfillment](#fulfillment)
 	- [Bot Build](#bot-build)
 	- [Bot Testing](#bot-testing)
@@ -369,6 +370,38 @@ We'll pick several phrases from the `get_cluster_status.py` example and enter th
 ![Sample Utterances](/docs/images/sample-utterances.jpg)
 
 If the spoken command matches one of the sample utterances, the intent will be chosen. Roxie will then look at the fulfillment to see what to do next.
+
+### Intents Involving Slots
+
+Certain functions require further information from the intent before fulfillment can be satisified. For instance when the Invoke a VMware Live Mount intent is sent through Lex, a response will be sent asking "Which VM?" to perform the Live Mount on. In order to store the response to "Which VM?" Lex utilizing Slots. A slot is simply data which the user must provide in order to fulfill the intent.
+
+Each slot is assigned a type, definining exactly what that slot represents. For the invoke_vmware_live_mount function a custom slot type of VMName is utilized. Use the following procedure to add a slot to an intent.
+
+Select the plus icon next to Slot types on the left hand navigational menu, then select ***Create slot type*** from the dialog presented.
+
+![Create Slot Type](/docs/images/createslottype.png)
+
+Provide a Name and Description for the custom slot type as well as the desired Slot Resolution. In the case of Live Mounting a VM, you can simply provide some example values of what your VM names might look like. Once complete, select ***Add slot to intent***
+
+![Create Slot Type Details](/docs/images/createslottypedetails.png)
+
+A new slot with the custom slot type defined has now been created within the intent. Assign the slot valid prompt text (The text which will be sent back to the user). 
+
+```
+Note: The given name of the slot must match exactly with the corresponding value within the Lambda functions
+```
+
+![Intent with slot](/docs/images/slotinintent.png)
+
+The intent will now prompt the user for the defined slot value.
+
+![Intent Test](/docs/images/livemount.png)
+
+The following functions within Roxie have slot integration
+
+| Function Name | Slot Name | Slot Type | Description |
+| ------------- | --------- | --------- | -----------
+| invoke_vmware_live_mount.py | slotOne | VMName | Prompts the user to enter a name of a VMware virtual machine to live mount |
 
 ### Fulfillment
 

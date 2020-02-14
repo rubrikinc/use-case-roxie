@@ -37,16 +37,16 @@ The following outlines the configuration process of creating an Alexa Skill arou
 
 ![](images/create-alexa-skill.png)
 
-1. From the template selection screen, select `Start from scratch` and click `Choose`.
+2. From the template selection screen, select `Start from scratch` and click `Choose`.
 
 ![](images/choose-template.png)
 
-1. From the left hand navigational menu, select `Interaction Model` -> `Intents` -> `JSON Editor`. Drag and drop [this file](ask/intents.json) containing the Roxie intents into the JSON editor and click `Save Model`
+3. From the left hand navigational menu, select `Interaction Model` -> `Intents` -> `JSON Editor`. Drag and drop [this file](ask/intents.json) containing the Roxie intents into the JSON editor and click `Save Model`
 ![](images/import-json.png)
 
 **Note - The names of the intents must be an exact match with the names of the individual Lambda functions setup within your Roxie bot. The wrapper function created later will execute these individual functions based on the intent name. For example, if you have an intent named *get_cluster_status* an associated Lambda function must exist named *get_cluster_status*.**
 
-1. From the left hand navigation within the build section, select `Interaction Model` -> `Invocation`. Here we need to define an invocation name for our skill. This will be the words spoken to Alexa to invoke our skill (IE Alexa, Open Rubrik Roxy). By default, `rubrik roxy` will be used from the imported JSON in the previous step however feel free to modify this to your preference. *Note - if using roxy it must be spelt with a 'y' in order for Alexa to understand the pronunciation of the word.*
+4. From the left hand navigation within the build section, select `Interaction Model` -> `Invocation`. Here we need to define an invocation name for our skill. This will be the words spoken to Alexa to invoke our skill (IE Alexa, Open Rubrik Roxy). By default, `rubrik roxy` will be used from the imported JSON in the previous step however feel free to modify this to your preference. *Note - if using roxy it must be spelt with a 'y' in order for Alexa to understand the pronunciation of the word.*
 
 ![](images/invocation-naming.png)
 

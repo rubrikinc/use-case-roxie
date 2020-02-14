@@ -1,0 +1,143 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "rubrik roxy",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "get_cluster_status",
+                    "slots": [],
+                    "samples": [
+                        "for cluster status",
+                        "to get the cluster status",
+                        "get the cluster status",
+                        "tell me about my cluster",
+                        "ask roxie how my cluster is doing",
+                        "whats the status of my cluster",
+                        "hows my cluster doing"
+                    ]
+                },
+                {
+                    "name": "get_node_count",
+                    "slots": [],
+                    "samples": [
+                        "to get the number of nodes in the cluster",
+                        "to get the node count",
+                        "how many notes are in the cluster",
+                        "what is the node count",
+                        "how many nodes are in the cluster",
+                        "what is the number of nodes in the cluster"
+                    ]
+                },
+                {
+                    "name": "get_cluster_storage_details",
+                    "slots": [],
+                    "samples": [
+                        "for capacity information",
+                        "about storage",
+                        "to get storage info",
+                        "for storage info",
+                        "for storage informatoin",
+                        "to get storage details",
+                        "to get storage information",
+                        "for storage details",
+                        "for storage information",
+                        "about my cluster capacity",
+                        "to get the storage details of my cluster",
+                        "to get the storage details of the cluster",
+                        "What is the capacity of the cluster",
+                        "How much space is available on the cluster",
+                        "How much space is used on the cluster",
+                        "Give me cluster storage details"
+                    ]
+                },
+                {
+                    "name": "get_data_growth_rate",
+                    "slots": [],
+                    "samples": [
+                        "about data growth",
+                        "how fast my data is growing",
+                        "to get the data growth rate",
+                        "get the rate of date growth",
+                        "How is my data growing",
+                        "How fast is my data growing",
+                        "What is the amount of data growth",
+                        "Rate of data growth",
+                        "What is the rate of my data growth"
+                    ]
+                },
+                {
+                    "name": "get_archived_amount",
+                    "slots": [],
+                    "samples": [
+                        "how much data i have archived",
+                        "for archived data information",
+                        "to get the amount of archived data",
+                        "how much data is archived",
+                        "How much data has been archived",
+                        "Give me details of archival storage",
+                        "What is the amount of archived data"
+                    ]
+                },
+                {
+                    "name": "get_sla_compliance",
+                    "slots": [],
+                    "samples": [
+                        "about compliance",
+                        "about my slas",
+                        "for an SLA compliance summary",
+                        "for a compliance summary",
+                        "How are my SLAs doing",
+                        "Are my SLAs in compliance",
+                        "Read out SLA compliance summary",
+                        "Give me SLA complaince summary",
+                        "Get me the SLA complaince summary",
+                        "How many SLAs are in compliance"
+                    ]
+                },
+                {
+                    "name": "open_support_tunnel",
+                    "slots": [],
+                    "samples": [
+                        "to create a support tunnel",
+                        "to open a support tunnel",
+                        "Create support tunnel",
+                        "Open support tunnel"
+                    ]
+                },
+                {
+                    "name": "get_remaining_runway",
+                    "slots": [],
+                    "samples": [
+                        "how much time I have left",
+                        "to get remaining runway",
+                        "to get the remaining runway",
+                        "How much runway is left",
+                        "How much runway do I have",
+                        "What is the remaining runway on my cluster"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        }
+    }
+}

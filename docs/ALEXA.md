@@ -4,20 +4,20 @@
 
 # Introduction to the Roxie Alexa Skill
 
-Since Amazon's Alexa utilizes Lex in order to determine and power intents for its' skills, porting Roxie to an Alexa Skill is a fairly simple process.  This guide will walk through the steps which need to be performed in order to export/import the Lex intents, create the wrapper Lambda function, and publish the Alexa skill to a subset of beta users. Requirements and configuration may change if wishing to publicly publish a skill within the Alexa Skills directory or the Alexa for Business directory.
+Since Alexa Skills Kit (ASK) utilizes Lex in order to determine and power intents for skills, porting Roxie to an Alexa skill is a fairly simple process. This guide will walk through the steps that need to be performed in order to export/import the Lex intents, create the wrapper Lambda function, and publish the Alexa skill to a subset of beta users. Requirements and configuration may change depending on decisions to publicly publish a skill within the Alexa Skills or the Alexa for Business directories.
 
-Even though Alexa is powered by Lex, there are a number of different requirements and limitations which must be met and overcome before the skill will work. For example, while Lex allows us to configure an endpoint (Lambda function) per intent, Alexa only supports one endpoint overall. For this reason we need to build a wrapper Lambda function which will in turn call the individual Roxie Lambda functions.  
+Even though Alexa is powered by Lex, there are a number of limitations and differentiations as to how we set up the skill. For example, while Lex allows us to configure an endpoint (Lambda function) per intent, Alexa only supports one endpoint total. For this reason we need to build a wrapper Lambda function to act as our endpoint which will in turn call the individual Roxie Lambda functions within the Roxie use-case.  
 
 The end to end workflow is as follows:
 
-1. A users asks a question to Roxie via the Alexa skill keyword.
+1. A users asks a question to Roxie via the Alexa skill invocation keyword.
 1. Alexa Skills Kit (ASK) translates the utterances or spoken words to a given intent.
-1. The intent is sent to the wrapper Lambda function (ASK endpoint) for processing.
-1. The wrapper Lambda function processes the intent name, calling the associated individual Lambda function to fulfil the intent.
+1. The intent request is sent to the wrapper Lambda function (ASK endpoint) for processing.
+1. The wrapper Lambda function processes the intent name, calling the associated individual Lambda function within the Roxie use-case to fulfil the intent.
 1. The individual function contains code used to query the Rubrik API and find an answer to our question.
-1. The Rubrik API responds to the query and responds to the individual Lambda function. The function code then formats the message into something a bit more human friendly.
-1. The friendly message is handed back to the wrapper Lambda function, where it is then further modified into a format which the Alexa Skill can read and sent to the Alexa Skill.
-1. The Alexa Skill then presents the response to the user via spoken word.
+1. The Rubrik API responds to the query and to the individual Lambda function. The function code then formats the message into something a bit more human friendly.
+1. The friendly message is handed back to the wrapper Lambda function, where it is then further modified into a format which the Alexa Skill can read and sent to back to the Alexa Skills Kit.
+1. The Alexa skill then returns the response to the user via spoken word.
 
 # Prerequisites
 
@@ -29,10 +29,12 @@ The following are the prerequisites required in order to create and test the Rox
 
 # Configuration
 
+The following outlines the configuration process of creating an Alexa Skill around the Roxie use-case.
 
 ## Create an Alexa Skill
 
-1. Log into the Alexa Developer Portal and click `Create Skill` to create a new skill. Give the skill your desired name, selecting `Custom` as a model, and `Provision your own` for backend hosting.
+1. Log into the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) and click `Create Skill` to create a new skill. Give the skill your desired name, selecting `Custom` as a model, and `Provision your own` for backend hosting. When finished, click `Create Skill`.
+![](images/create-alexa-skill.png)
 1. From the template selection screen, select `Start from scratch`
 1. From the left hand navigation within the build section, select `Invocation`.
 1. Here we need to define an invocation name for our skill. This will be the command passed to Alexa to invoke our skill. This example uses ``Rubrik Roxy``. *Note - Roxy must be spelt with a 'y' here in order for Alexa to understand the pronunciation of our invocation.*

@@ -34,13 +34,20 @@ The following outlines the configuration process of creating an Alexa Skill arou
 ## Create an Alexa Skill
 
 1. Log into the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) and click `Create Skill` to create a new skill. Give the skill your desired name, selecting `Custom` as a model, and `Provision your own` for backend hosting. When finished, click `Create Skill`.
+
 ![](images/create-alexa-skill.png)
+
 1. From the template selection screen, select `Start from scratch` and click `Choose`.
+
 ![](images/choose-template.png)
+
 1. From the left hand navigational menu, select `Interaction Model` -> `Intents` -> `JSON Editor`. Drag and drop [this file](ask/intents.json) containing the Roxie intents into the JSON editor and click `Save Model`
 ![](images/import-json.png)
-***Note - The names of the intents must be an exact match with the names of the individual Lambda functions setup within your Roxie bot. The wrapper function created later will execute these individual functions based on the intent name. For example, if you have an intent named *get_cluster_status* an associated Lambda function must exist named *get_cluster_status*.***
+
+**Note - The names of the intents must be an exact match with the names of the individual Lambda functions setup within your Roxie bot. The wrapper function created later will execute these individual functions based on the intent name. For example, if you have an intent named *get_cluster_status* an associated Lambda function must exist named *get_cluster_status*.**
+
 1. From the left hand navigation within the build section, select `Interaction Model` -> `Invocation`. Here we need to define an invocation name for our skill. This will be the words spoken to Alexa to invoke our skill (IE Alexa, Open Rubrik Roxy). By default, `rubrik roxy` will be used from the imported JSON in the previous step however feel free to modify this to your preference. *Note - if using roxy it must be spelt with a 'y' in order for Alexa to understand the pronunciation of the word.*
+
 ![](images/invocation-naming.png)
 
 With our intents and invocation configured, we can now begin to create the wrapper lambda function.  

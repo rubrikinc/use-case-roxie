@@ -34,49 +34,65 @@ The following outlines the configuration process of creating an Alexa Skill arou
 ## Create an Alexa Skill
 
 1. Log into the [Alexa Developer Console](https://developer.amazon.com/alexa/console/ask) and click `Create Skill` to create a new skill. Give the skill your desired name, selecting `Custom` as a model, and `Provision your own` for backend hosting. When finished, click `Create Skill`.
-
 ![](images/create-alexa-skill.png)
-
-2. From the template selection screen, select `Start from scratch` and click `Choose`.
-
+1. From the template selection screen, select `Start from scratch` and click `Choose`.
 ![](images/choose-template.png)
-
-3. From the left hand navigational menu, select `Interaction Model` -> `Intents` -> `JSON Editor`. Drag and drop [this file](ask/intents.json) containing the Roxie intents into the JSON editor and click `Save Model`
+1. From the left hand navigational menu, select `Interaction Model` -> `Intents` -> `JSON Editor`. Drag and drop [this file](ask/intents.json) containing the Roxie intents into the JSON editor and click `Save Model`
 ![](images/import-json.png)
-
 **Note - The names of the intents must be an exact match with the names of the individual Lambda functions setup within your Roxie bot. The wrapper function created later will execute these individual functions based on the intent name. For example, if you have an intent named *get_cluster_status* an associated Lambda function must exist named *get_cluster_status*.**
-
-4. From the left hand navigation within the build section, select `Interaction Model` -> `Invocation`. Here we need to define an invocation name for our skill. This will be the words spoken to Alexa to invoke our skill (IE Alexa, Open Rubrik Roxy). By default, `rubrik roxy` will be used from the imported JSON in the previous step however feel free to modify this to your preference. *Note - if using roxy it must be spelt with a 'y' in order for Alexa to understand the pronunciation of the word.*
-
+1. From the left hand navigation within the build section, select `Interaction Model` -> `Invocation`. Here we need to define an invocation name for our skill. This will be the words spoken to Alexa to invoke our skill (IE Alexa, Open Rubrik Roxy). By default, `rubrik roxy` will be used from the imported JSON in the previous step however feel free to modify this to your preference. **Note - if using roxy it must be spelt with a *y* in order for Alexa to understand the pronunciation of the word.**
 ![](images/invocation-naming.png)
 
-With our intents and invocation configured, we can now begin to create the wrapper lambda function.  
+With intents and invocation configured we can now proceed to modify our IAM service role and create the wrapper Lambda function.  
 
 ## Modify IAM service role used by Roxie
 
+In order for our wrapper Lambda function to execute the individual Lambda functions within the Roxie use-case we will need to grant the proper permissions through AWS IAM. The following outlines the process of adding the required permissions to the `roxie_lambda` role created during the initial configuration of the Roxie use-case.
+
+1. Log into the AWS Console and select the IAM service.
+1. Select `Access management` -> `Roles` from the left hand navigational menu. Click the role which was created for the roxie use-case.
+![](images/roxie-role.png)
+1. From the Summary page click `Attach policies`.
+![](images/attach-iam-policy.png)
+1. Find the `AWSLambdaRole` policy, select the checkbox, and click `Attach policy`.
+![](images/attach-aws-lambda-role.png)
+
+The service role now has the required permissions to execute Lambda functions.
+
 ## Create a wrapper Lambda Function
 
-1. Head into Lambda and select 'Create function'.
-1. Select 'Author from scratch'  Give the function a name and ensure that Python 3.6 is selected for the runtime.
-1. Under permissions, select to use an existing role, selecting the same role as that used within the Roxie use-case.
-***NOTE*** In order to give the wrapper function permissions to execute the other lambda functions the AWSLambdaRole must be added to the existing service role.
-1. Within the designer section, select to add a new trigger. Select the Alexa Skills Kit trigger.  Leave Skill ID verification checked and input the skill id of the newly created Alexa Skill ( This can be obtained by selecting 'Show Skill ID' on the listing of skills created within the Alexa Developer Console.
-1. Copy the code from this file to the inline editor within the function
+1. Log into the AWS Console and select the Lambda service and select 'Create function'.
+![](images/create-lambda-function.png)
+1. Select `Author from scratch`. Give the function a name, select Python 3.X as the runtime language. Select to `Use and existing role` as the execution role and select the IAM role which was modified above and click `Create function`.
+![](images-setup-lambda-function.png)
+1. Within the designer section, select `Add trigger`. From the trigger selection dialog, select `Alexa Skills Kit`.  Ensure `Skill ID Verification` is enabled and input the skill id of the newly created Alexa Skill and click `Add`.
+![](images-add-trigger.png)
+**Note - The Alexa Skill ID can be found by selecting `View Skill Id` on the listing of your Alexa skills within the Alexa Developer Console.**
+![](images/find-skill-id.png)
+1. Copy the code from [this file](ask/roxie_alexa_skill_wrapper.py) to the inline editor within the function and select `Save`.
 
 ## Associate wrapper Lambda function ARN with Alexa Skill
 
-1. Within the wrapper Lambda function previously created, select the ARN located in the ?????
-1. From the left hand navigational menu, select Endpoint.  Select Amazon Lambda ARN as the endpoint type, and paste the previously copied ARN into the Default Endpoint section, and click 'Save Endpoints'
-1. Select Intents from the Left hand navigational menu, then click 'Build Model'
+1. Log into the Alexa Developer Console and select the previously created Alexa skill.
+1. From the left hand navigational menu, select `Endpoint`. Select `Amazon Lambda ARN` as the Service Endpoint Type, paste the ARN of the previously created wrapper function into the Default Region input box, and click `Save Endpoints`.
+![](images/copy-arn.png)
+**Note - The ARN for the wrapper Lambda function can be found within the Lambda function in the top right hand side of the screen.**
+![](images/find-arn.png)
+1. From the left hand navigational menu select `Intents` and click `Save Model`. Once saved, click `Build Model`
 
 ## Testing the Alexa Skill before publishing
 
-1. Select 'Test' to begin testing our skill.  Select Development from the dropdown above.  We can now begin to test our intents by sending input into the testing input box. IE Ask Rubrik Roxy how my cluster is doing should run the get_cluster_status function and return content.
-
+1. Select `Test` from the top navigational menu to begin testing our skill.  Select `Development` from the Skill testing dropdown.
+![](images/test-skill.png)
+1. We can now begin to test our intents by sending input into the testing input box. IE Ask Rubrik Roxy how my cluster is doing should run the get_cluster_status function and return content.
+![](images/skill-working.png)
+`
 ## Publish the Alexa skill and associate beta user(s)
 
 Once all functions and intents are working properly we can publish and invite users to test our skill.
 
-1. Select the distribution tab and fill out the required fields (Short/Long Description) ICONS, category
-1. Answer all the questions.
-1. Go to the end and do the validation - it may not end.  Doesn't matter, go back to distribution and follow the prompts until you get to the beta test part.  Enable the beta test and input the emails of associated Amazon accounts with devices you want to test on.  Get the email, enable the skill in your account - boom
+1. Select `Distribution` from the top navigation menu and fill out all of the required fields (Name/One Sentence Description, Detailed Description, Example Phrases, Icons and Category). Click `Save and continue`
+1. Answer the Privacy & Compliance questions and click `Save and Continue`
+1. Within the `Availability` dialog select `Public` as the skill access and click `Save and Continue` **Note - We will come back to this page to enable the beta access as the skill must pass verification before that can happen - It won't actually be public**
+1. Validation will begin automatically. Once a valid certification has been obtained, navigate back to the `Availability` section of the Skill distribution.  Enable the Beta Access and invite the Amazon Alexa accounts you wish to have access to the skill
+1. Begin chatting with your Rubrik cluster :)

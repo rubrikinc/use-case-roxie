@@ -95,4 +95,5 @@ Once all functions and intents are working properly we can publish and invite us
 1. Answer the Privacy & Compliance questions and click `Save and Continue`
 1. Within the `Availability` dialog select `Public` as the skill access and click `Save and Continue` **Note - We will come back to this page to enable the beta access as the skill must pass verification before that can happen - It won't actually be public**
 1. Validation will begin automatically. Once a valid certification has been obtained, navigate back to the `Availability` section of the Skill distribution.  Enable the Beta Access and invite the Amazon Alexa accounts you wish to have access to the skill
+1. Install and enable the skill on the beta user Alexa account as per the [Alexa Help and Support Guides](https://www.amazon.com/b/ref=aeg_lp_hs_d_text/ref=s9_acss_bw_cg_aeglp_md1_w?node=17978646011&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=8SKDDXVVS0N9YQTJ1N3Z&pf_rd_t=101&pf_rd_p=854092b7-c46b-4f6c-ba7e-7b6e17552e7c&pf_rd_i=17934671011)
 1. Begin chatting with your Rubrik cluster :)

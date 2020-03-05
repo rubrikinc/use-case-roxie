@@ -2,6 +2,16 @@
 
 # Table of Contents
 
+* [Introduction to the Roxie Alexa Skill](#Introduction-to-the-Roxie-Alexa-Skill)
+* [Prerequisites](#Prerequisites)
+* [Configuration](#Configuration)
+    * [Create an Alexa Skill](#Create-an-alexa-skill)
+    * [Modify IAM Service Role used by Roxie](#Modify-IAM-Service-role-used-by-roxie)
+    * [Create a wrapper Lambda function](#Create-a-wrapper-lambda-function)
+    * [Associate wrapper Lambda function ARN with Alexa Skill](#Associate-wrapper-lambda-function-arn-with-alexa-skill)
+    * [Testing the Alexa Skill before Publishing](#Testing-the-alexa-skill-before-publishing)
+    * [Publish the Alexa Skill and associate beta users](#Publish-the-alexa-skill-and-associate-beta-users)
+
 # Introduction to the Roxie Alexa Skill
 
 Since Alexa Skills Kit (ASK) utilizes Lex in order to determine and power intents for skills, porting Roxie to an Alexa skill is a fairly simple process. This guide will walk through the steps that need to be performed in order to export/import the Lex intents, create the wrapper Lambda function, and publish the Alexa skill to a subset of beta users. Requirements and configuration may change depending on decisions to publicly publish a skill within the Alexa Skills or the Alexa for Business directories.

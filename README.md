@@ -10,6 +10,7 @@ Here are some resources to get you started! If you find any challenges from this
 
 * [Getting Started Video](https://youtu.be/znjH9T3BveM)
 * [Quick Start Guide](/docs/QUICKSTART.md)
+* [Porting Roxie to an Alexa Skill](/docs/ALEXA.md)
 
 # :white_check_mark: Prerequisites
 

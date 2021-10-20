@@ -1,0 +1,84 @@
+{
+    "Intents": [
+        {
+            "name": "get_cluster_status",
+            "description": "Runs lambda function to retrieve status of nodes within Rubrik Cluster",
+            "utterances": [
+                {"utterance": "status of my cluster"},
+                {"utterance": "is the cluster doing okay"},
+                {"utterance": "How is my cluster doing"},
+                {"utterance": "What is the cluster status"},
+                {"utterance": "What is the status of the cluster"}
+            ]
+        },
+        {
+            "name": "get_archived_amount",
+            "description": "Runs lambda function to retrieve amount of data archived",
+            "utterances": [
+                {"utterance": "How much data has been archived"},
+                {"utterance": "Give the the details of the archival storage"},
+                {"utterance": "What is the amount of archived data"},
+                {"utterance": "What is my archival capacity"}
+            ]
+        },
+        {
+            "name": "get_cluster_storage_details",
+            "description": "Runs lambda function to retrieve the available space on a cluster",
+            "utterances": [
+                {"utterance": "What is the capacity of the cluster"},
+                {"utterance": "How much space is available on the cluster"},
+                {"utterance": "How much space is used on the cluster"},
+                {"utterance": "Give me the cluster storage details"}
+            ]
+        },
+        {
+            "name": "get_data_growth_rate",
+            "description": "Runs lambda function to retrieve data growth rates",
+            "utterances": [
+                {"utterance": "How is my data growing"},
+                {"utterance": "How fast is my data growing"},
+                {"utterance": "What is the amount of data growth"},
+                {"utterance": "Rate of data growth"},
+                {"utterance": "What is the rate of my data growth"}
+            ]
+        },
+        {
+            "name": "get_node_count",
+            "description": "Runs lambda function to determine number of nodes within Rubrik cluster",
+            "utterances": [
+                {"utterance": "What is the node count"},
+                {"utterance": "How many nodes are in the cluster"},
+                {"utterance": "What is the number of nodes in the cluster"}
+            ]
+        },
+        {
+            "name": "get_remaining_runway",
+            "description": "Runs lambda function to how much runway is left in terms of capacity",
+            "utterances": [
+                {"utterance": "How much runway is left"},
+                {"utterance": "How much runway do I have left"},
+                {"utterance": "What is the remaining runway on my cluster"}
+            ]
+        },
+        {
+            "name": "get_sla_compliance",
+            "description": "Runs lambda function to report on SLA Compliance",
+            "utterances": [
+                {"utterance": "How are my SLAs doing"},
+                {"utterance": "Are my SLAs in compliance"},
+                {"utterance": "Give me the SLA Compliance summary"},
+                {"utterance": "How many SLAs are in compliance"}
+            ]
+        },
+        {
+            "name": "open_support_tunnel",
+            "description": "Runs lambda function to retrieve data growth rates",
+            "utterances": [
+                {"utterance": "Open a support tunnel"},
+                {"utterance": "Create a support tunnel"},
+                {"utterance": "Open a port for support"},
+                {"utterance": "Allow Rubrik support to connect to my cluster"}
+            ]
+        }
+    ]
+}

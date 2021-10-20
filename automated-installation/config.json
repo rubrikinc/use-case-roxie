@@ -1,0 +1,12 @@
+{
+    "aws_lambda_function_name": "roxie",
+    "aws_region": "us-west-2",
+    "aws_lambda_subnet_ids": "subnet-0bd3e627ba5bdb539,subnet-07a7efd2e2b097d64",
+    "aws_lambda_security_group_ids": "sg-0cf9d4ed6393e46e7",
+    "aws_lambda_runtime": "python3.7",
+    "aws_lambda_role_arn": "arn:aws:iam::1233456789:role/service-role/roxie_lambda",
+    "aws_lex_bot_name": "roxie",
+    "aws_lex_role_arn": "arn:aws:iam::123456789:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots",
+    "rbk_cluster_ip": "10.8.107.34",
+    "rbk_auth_token": "BIG_LONG_AUTH_TOKEN"
+}
